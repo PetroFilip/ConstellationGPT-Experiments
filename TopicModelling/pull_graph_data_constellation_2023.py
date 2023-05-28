@@ -104,6 +104,7 @@ if __name__ == "__main__":
 
             docs.append(reconstructed_doc)
 
+        # perform topic modeling
         topics, probs = topic_model.fit_transform(docs)
         print(topics, probs)
 

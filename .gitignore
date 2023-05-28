@@ -1,0 +1,12 @@
+# Ignore Jupyter Notebook files
+.ipynb_checkpoints/
+*.ipynb
+
+# Ignore virtual environment directories
+venv/
+env/
+.venv/
+.ENV/
+
+# Ignore other common virtual environment files
+pip-lock.txt
