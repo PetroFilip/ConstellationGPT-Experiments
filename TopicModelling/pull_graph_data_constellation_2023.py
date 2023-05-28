@@ -1,5 +1,4 @@
 from neo4j import GraphDatabase
-import unicodedata
 from bertopic import BERTopic
 
 # instantiate graph db connection
