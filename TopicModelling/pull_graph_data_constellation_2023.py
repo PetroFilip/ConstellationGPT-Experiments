@@ -1,5 +1,5 @@
 from neo4j import GraphDatabase
-from bertopic import BERTopic
+
 
 # instantiate graph db connection
 uri = "neo4j://amraelp00007371.pfizer.com:7687"
@@ -7,11 +7,6 @@ db_name = "constellation.graph.2023"
 user = "neo4j"
 password = "neo4jpoc"
 driver = GraphDatabase.driver(uri, database=db_name, auth=(user, password))
-
-# instantiate topic model
-topic_model = BERTopic("all-MiniLM-L6-v2")
-# "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext"
-# "emilyalsentzer/Bio_ClinicalBERT"
 
 
 def get_all_study_names(session):
@@ -92,7 +87,7 @@ if __name__ == "__main__":
     with driver.session() as session:
         # show_chunk_length_statistics(session)
 
-        study_ids = get_all_study_names(session)
+        study_ids = get_all_study_names(session)[:3]
 
         docs = []  # holds reconstructed protocols for each study has strings
         for study_id in study_ids:
@@ -102,12 +97,6 @@ if __name__ == "__main__":
             # print(reconstructed_doc)
 
             docs.append(reconstructed_doc)
-
-        # perform topic modeling
-        topics, probs = topic_model.fit_transform(docs)
-        print(topics, probs)
-
-        df = topic_model.get_topic_info()
 
         session.close()
         driver.close()

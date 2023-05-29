@@ -8,5 +8,8 @@ env/
 .venv/
 .ENV/
 
+# any data files
+*.csv
+
 # Ignore other common virtual environment files
 pip-lock.txt
