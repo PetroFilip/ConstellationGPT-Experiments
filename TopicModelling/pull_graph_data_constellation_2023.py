@@ -52,17 +52,17 @@ def show_chunk_length_statistics(session):
         chunks = grab_all_doc_content_ordered(study_id, session)
 
         total_length = 0
-        above_500 = 0
-        above_1000 = 0
+        above_5000 = 0
+        above_10000 = 0
         for i in chunks:
             length = len(i)
             total_length += length
 
-            if length > 500:
-                above_500 += 1
+            if length > 5000:
+                above_5000 += 1
 
-            if length > 1000:
-                above_1000 += 1
+            if length > 10000:
+                above_10000 += 1
 
         avg_length = total_length / len(chunks)
         total_across_studies += avg_length
@@ -71,8 +71,8 @@ def show_chunk_length_statistics(session):
         ----------------------------
         Study ID: {study_id}
         Average Chunk Length (characters): {int(avg_length)}
-        Number of Documents with over 500 characters: {above_500}
-        Number of Documents with over 1000 characters: {above_1000}
+        Number of Documents with over 5000 characters: {above_5000}
+        Number of Documents with over 10000 characters: {above_10000}
         Total Chunks: {len(chunks)}
         ----------------------------
         """
@@ -85,18 +85,18 @@ def show_chunk_length_statistics(session):
 if __name__ == "__main__":
 
     with driver.session() as session:
-        # show_chunk_length_statistics(session)
+        show_chunk_length_statistics(session)
 
-        study_ids = get_all_study_names(session)[:3]
+        # study_ids = get_all_study_names(session)[:3]
 
-        docs = []  # holds reconstructed protocols for each study has strings
-        for study_id in study_ids:
-            doc_chunks = grab_all_doc_content_ordered(study_id, session)
+        # docs = []  # holds reconstructed protocols for each study has strings
+        # for study_id in study_ids:
+        #     doc_chunks = grab_all_doc_content_ordered(study_id, session)
 
-            reconstructed_doc = reconstruct_document(doc_chunks)
-            # print(reconstructed_doc)
+        #     reconstructed_doc = reconstruct_document(doc_chunks)
+        #     # print(reconstructed_doc)
 
-            docs.append(reconstructed_doc)
+        #     docs.append(reconstructed_doc)
 
         session.close()
         driver.close()

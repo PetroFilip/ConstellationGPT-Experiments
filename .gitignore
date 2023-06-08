@@ -7,9 +7,15 @@ venv/
 env/
 .venv/
 .ENV/
+pfizer-bioelectra-sts/
+
+# pycache files
+**/__pycahce__/
+*.pyc
 
 # any data files
 *.csv
 
 # Ignore other common virtual environment files
 pip-lock.txt
+
