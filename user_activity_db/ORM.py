@@ -189,7 +189,7 @@ class BackEndConvoPieces(Base):
 
 # TODO: write functions for the following:
 # 	-update any non-trivial table (Add/remove values)
-# 	-query all user info
+# 	-query all user info 
 # 	-for a user, query all session info
 # 	-for session, query all session info (convo peices,)
 # 		front end
